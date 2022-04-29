@@ -19,13 +19,13 @@ def task_2():
 
 
 def task_3():
-    product_name: str = ""
+
     products_list: list = []
 
     print("Enter the products you want to buy. Type \"stop\" when your list is done. \n")
 
-    while product_name.lower() != "stop".lower():
-        product_name = input()
+    while True:
+        product_name: str = input()
         if product_name.lower() == "stop".lower():
             break
 
@@ -60,7 +60,7 @@ def task_6():
 
 
 def task_7():
-    list_of_tuples: tuple = [(1, 2), (2, 3, 5), (3, 4), (2, 3, 4, 2)]
+    list_of_tuples: tuple = tuple([(1, 2), (2, 3, 5), (3, 4), (2, 3, 4, 2)])
     list_of_lists = [list(item) for item in list_of_tuples]
     print(list_of_lists)
 
@@ -84,12 +84,12 @@ def task_9():
 
 
 if __name__ == "__main__":
-    task_1()
-    task_2()
+    # task_1()
+    # task_2()
     task_3()
-    task_4()
-    task_5()
-    task_6()
-    task_7()
-    task_8()
-    task_9()
+    # task_4()
+    # task_5()
+    # task_6()
+    # task_7()
+    # task_8()
+    # task_9()
