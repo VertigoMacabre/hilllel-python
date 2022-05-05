@@ -105,7 +105,7 @@ def task_4():
 
     print(unique_students_info_list)
 
-    # another solvation
+    # інше рішення
     #
     # while any(list(students_info.values()).count(info) > 1 for info in students_info.values()):
     #     for key in students_info.copy().keys():
