@@ -85,7 +85,7 @@ def task_3():
 
     make_a_cat("Loki", "orange", sex="female", age=4, legs=4, eyes=2)
     make_a_cat("Odin", "mixed colours", sex="male", age=4, legs=4, eyes=1)
-    make_a_cat("Arya", "mixed colours", sex="female", age=5, legs=4, eyes=2)
+    make_a_cat("Arya", "mixed colours", sex="female", age=9, legs=4, eyes=2)
     make_a_cat("Businka", "orange", sex="male", age=4, legs=4, eyes=2)
 
 
