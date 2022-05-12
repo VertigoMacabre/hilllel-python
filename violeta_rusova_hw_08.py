@@ -37,6 +37,8 @@ def task_4():
     print(day(now))
     print(time(now))
 
+    # https://docs.python.org/3/library/datetime.html
+
 
 
 if __name__ == "__main__":
