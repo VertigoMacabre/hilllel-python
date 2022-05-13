@@ -179,7 +179,7 @@ def task_3():
             start = datetime.now()
             function()
             finish = datetime.now() - start
-            print(("Fetch webpage", finish))
+            print("Time took to fetch: ", finish)
 
         return wrapper
 
