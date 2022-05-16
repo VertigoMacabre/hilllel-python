@@ -1,4 +1,4 @@
-def task_1():
+def task_1() -> None:
     # list comprehension
 
     # 1. list of integers to a list of strings
@@ -25,7 +25,7 @@ def task_1():
     print(['even' if i % 2 == 0 else 'odd' for i in ranged_list])
 
 
-def task_2():
+def task_2() -> None:
     # dict comprehension
     # 1. creating dict with numbers as values
     print({str(i): i for i in [1, 2, 3, 4, 5]})
@@ -45,7 +45,7 @@ def task_2():
     print({v: k for k, v in shoping_dict.items()})
 
 
-def task_3():
+def task_3() -> None:
     def pass_func():
         pass
 
@@ -81,7 +81,7 @@ def task_3():
     funct_5('Odin', 'gray')
 
     def make_a_cat(name, *agrs, sex="", **kwargs):
-        print(name, ars, sex, kwargs)
+        print(name, agrs, sex, kwargs)
 
     make_a_cat("Loki", "orange", sex="female", age=4, legs=4, eyes=2)
     make_a_cat("Odin", "mixed colours", sex="male", age=4, legs=4, eyes=1)
@@ -89,12 +89,11 @@ def task_3():
     make_a_cat("Businka", "orange", sex="male", age=4, legs=4, eyes=2)
 
 
-def task_4(side_of_square):
-    result: tuple = (side_of_square * 4, side_of_square * side_of_square ** 0.5, side_of_square ** 2)
-    print(result)
+def task_4(side_of_square) -> tuple:
+    return side_of_square * 4, side_of_square * side_of_square ** 0.5, side_of_square ** 2
 
 
-def task_5(month_num):
+def task_5(month_num) -> str:
     seasons: dict = {
         "winter": [1, 2, 12],
         "spring": [3, 4, 5],
@@ -107,34 +106,49 @@ def task_5(month_num):
             return key
 
 
-def task_6():
+def task_6() -> list:
     first_list: list = [1, 2, 3, 4]
     second_list: list = [11, 22, 33, 44]
     result = []
     for i in first_list:
         result.append(i)
-
         result.append(second_list[first_list.index(i)])
 
     return result
 
 
-def task_7():
-    palindrome: str = "Полицейский Петр Павлович пускал пузыри понапрасну. Преступность побеждала"
-    words: list = palindrome.lower().split()
-    start_with_char = words[0][0]
+def task_7() -> str:
+    def check_palindrome(users_string):
+        reversed_users_string = users_string[::-1]
+        return users_string == reversed_users_string
 
-    if any(w[0] != start_with_char for w in words):
-        return False
+    input_string = input("Enter your string: ")
+    is_palindrome = check_palindrome(input_string)
+    if is_palindrome:
+        return "It's a palindrome"
+    else:
+        return "Nope, it's not a palindrome"
 
-    return True
+
+"""Спочатку не так зрозуміла значення паліндрому, зробила замість нього перевірку на монофон. 
+Але вже най бцуде, я ж старалася """
+# def task_8():  # додаткове
+#     monophone: str = "Полицейский Петр Павлович пускал пузыри понапрасну. Преступность побеждала"
+#     words: list = monophone.lower().split()
+#     start_with_char = words[0][0]
+#
+#     if any(w[0] != start_with_char for w in words):
+#         return False
+#
+#     return True
 
 
 if __name__ == "__main__":
     # task_1()
     # task_2()
     task_3()
-    # task_4(6)
+    # print(task_4(6))
     # print(task_5(4))
     # print(task_6())
     # print(task_7())
+    # print(task_8())
