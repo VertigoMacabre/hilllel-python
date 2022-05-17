@@ -119,6 +119,7 @@ def task_6() -> list:
 
 def task_7() -> str:
     def check_palindrome(users_string):
+        users_string = users_string.lower()
         reversed_users_string = users_string[::-1]
         return users_string == reversed_users_string
 
@@ -131,7 +132,7 @@ def task_7() -> str:
 
 
 """Спочатку не так зрозуміла значення паліндрому, зробила замість нього перевірку на монофон. 
-Але вже най бцуде, я ж старалася """
+Але вже най буде, я ж старалася """
 # def task_8():  # додаткове
 #     monophone: str = "Полицейский Петр Павлович пускал пузыри понапрасну. Преступность побеждала"
 #     words: list = monophone.lower().split()
@@ -146,9 +147,9 @@ def task_7() -> str:
 if __name__ == "__main__":
     # task_1()
     # task_2()
-    task_3()
+    # task_3()
     # print(task_4(6))
     # print(task_5(4))
     # print(task_6())
-    # print(task_7())
+    print(task_7())
     # print(task_8())
