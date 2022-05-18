@@ -1,3 +1,6 @@
+import plistlib
+
+
 def task_1():
     input_string: str = "Hillel school"
     result: str = "%s%s" % (input_string[0:2:], input_string[-2::])
@@ -55,8 +58,10 @@ def task_5():
 
 
 def task_6():
-    data: tuple = (1, 2, 3)
-    print(data[:-1])
+    my_data: tuple = (1, 2, 3)
+    data_in_list: list = list(my_data)
+    my_data_cropped = tuple(data_in_list[:-1])
+    print(my_data_cropped)
 
 
 def task_7():
@@ -86,10 +91,10 @@ def task_9():
 if __name__ == "__main__":
     # task_1()
     # task_2()
-    task_3()
+    # task_3()
     # task_4()
     # task_5()
-    # task_6()
+    task_6()
     # task_7()
     # task_8()
     # task_9()
