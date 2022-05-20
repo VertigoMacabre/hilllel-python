@@ -85,8 +85,7 @@ class HelloWorld:  # буде повертати фразу стільки ра�
         self.counter = 0  # лічильник, буде рахувати, скільки ми з потрібних ітерацій зробили
 
     def __iter__(self):  # ітератор / iterator
-        # повертає сам об'єкт, бо він вже являється ітератором
-        return self
+        return self  # повертає сам об'єкт, бо він вже являється ітератором
 
     # ітератор та ітерабельне іноді розділяють за різними класами, але тут можна в один
 
@@ -123,7 +122,7 @@ def task_5():
 
 
 def task_6():
-    def example1():
+    def example1() -> None:
         try:
             for i in range(3):
                 x = int(input("enter a number: "))
@@ -139,13 +138,13 @@ def task_6():
 
     example1()
 
-    def example2(L):
+    def example2(l) -> None:
         print("\n\nExample 2")
-        sum = 0  # а це тут нащо??
-        sumOfPairs = []
+        sum: int = 0  # а це тут нащо??
+        sumOfPairs: list = []
         try:
-            for i in range(len(L)):
-                sumOfPairs.append(L[i] + L[i + 1])
+            for i in range(len(l)):
+                sumOfPairs.append(l[i] + l[i + 1])
                 print("sumOfPairs = ", sumOfPairs)
 
         except IndexError as e:
@@ -156,15 +155,15 @@ def task_6():
             print(e)
 
     try:
-        L = [10, 3, 5, 6, 9, 3]
-        example2(L)
+        l: list = [10, 3, 5, 6, 9, 3]
+        example2(l)
         example2([10, 3, 5, 6, "NA", 3])
         example3([10, 3, 5, 6])
 
     except NameError as e:
         print(f"а такой функции то и нет! {e}")
 
-    def printUpperFile(fileName):
+    def printUpperFile(fileName) -> bool:
         try:
             file = open(fileName, "r")
         except FileNotFoundError:
