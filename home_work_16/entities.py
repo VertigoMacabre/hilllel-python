@@ -33,3 +33,14 @@ class City:
         return f"{self.name} is {'capital' if self.is_capital else 'city'} of {self.country} " \
                f"with population {self.population} people " \
                f"official currency is {str(self.country.currency)}"
+
+
+class CurrencyConversion:
+    def __init__(self, name: str, code: str, exchange_date: str, rate: float):
+        self.name = name
+        self.code = code
+        self.exchange_date = exchange_date
+        self.rate = rate
+
+    def __str__(self):
+        return f"{self.name} {self.code} {self.exchange_date} {self.rate}"
