@@ -1,13 +1,18 @@
 import enum
 import json
+import os
 import sys
 from datetime import date
 
-from home_work_16.api import Api
-from home_work_16.entities import CurrencyConversion
+from dotenv import load_dotenv
+
+from api import Api
+from entities import CurrencyConversion
 
 commands = ['exchange', 'course']
 currencies = ["usd", "uah"]
+
+load_dotenv()
 
 
 class Command(enum.Enum):
@@ -47,7 +52,7 @@ class BalanceService:
         self.uah_rate = 1 / course.rate
 
         try:
-            with open("balance.json") as file:
+            with open(os.getenv("BALANCE_STATE")) as file:
                 balance_data = json.load(file)
             self.uah = balance_data['uah']
             self.usd = balance_data['usd']
@@ -99,7 +104,7 @@ class BalanceMessage:
         self.currency = currency
 
     def __str__(self):
-        return f"RATE: {self.balance.get_rate_of_currency(currency)}, " \
+        return f"RATE: {self.balance.get_rate_of_currency(self.currency)}, " \
                f"AVAILABLE {self.balance.get_amount_of_currency(self.currency)}"
 
 
@@ -120,7 +125,7 @@ if __name__ == "__main__":
             api: Api = Api()
             d = date.today().strftime("%Y%m%d")
             course: CurrencyConversion = api.currency_converter(Currency.USD.value, d)
-            balanceService: BalanceService = BalanceService(course)
+            balance_service: BalanceService = BalanceService(course)
 
             command_string = input("COMMAND\n")
 
@@ -130,18 +135,16 @@ if __name__ == "__main__":
 
             com, cur, *amount = command_string.lower().split(" ")
             if com not in [c.value for c in Command]:
-                print(f"unknown command {com}")
-                raise ValueError
+                raise ValueError(f"unknown command {com}")
 
             if cur not in [c.value for c in Currency]:
-                print(f"unavailable currency {cur}")
-                raise ValueError
+                raise ValueError(f"unavailable currency {cur}")
 
             currency: Currency = Currency(cur)
             command: Command = Command(com)
 
             if command == Command.COURSE:
-                print(BalanceMessage(balanceService, currency))
+                print(BalanceMessage(balance_service, currency))
 
             elif command == Command.EXCHANGE:
 
@@ -150,14 +153,14 @@ if __name__ == "__main__":
 
                 amount = int(amount[0])
 
-                print(BalanceMessage(balanceService, currency))
+                print(BalanceMessage(balance_service, currency))
 
-                exchange_data: ExchangeData = balanceService.is_available_amount(currency, amount)
+                exchange_data: ExchangeData = balance_service.is_available_amount(currency, amount)
 
                 if exchange_data.can_exchange:
-                    balanceService.exchange(currency, amount)
+                    balance_service.exchange(currency, amount)
                     print(
-                        f"OPERATION SUCCESS. CURRENT BALANCE IS:\n{BalanceMessage(balanceService, currency)}")
+                        f"OPERATION SUCCESS. CURRENT BALANCE IS:\n{BalanceMessage(balance_service, currency)}")
                 else:
 
                     raise InsufficientFundsError(exchange_data)
