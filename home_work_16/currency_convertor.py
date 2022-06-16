@@ -1,14 +1,11 @@
 import sys
 
 from dateutil import parser
-from dotenv import load_dotenv
 
 from api import Api
 from entities import CurrencyConversion
 from errors import CurrencyNotFound, BadHttpRequest
 from extract_params import extract_args
-
-load_dotenv()
 
 if __name__ == "__main__":
 

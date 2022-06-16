@@ -1,10 +1,12 @@
 import os
 
 import requests
+from dotenv import load_dotenv
 
 from entities import City, Country, Currency, CurrencyConversion
 from errors import BadHttpRequest, CityNotFoundError, CurrencyNotFound
 
+load_dotenv()
 
 class Api:
 
@@ -50,7 +52,7 @@ class Api:
 
     def currency_converter(self, want: str, date: str) -> CurrencyConversion:
 
-        api_url = os.getenv("RAPID_CURRENCY_CONVERTER_URL")
+        api_url = os.getenv("CURRENCY_CONVERTER_URL")
 
         request_params = {
             "valcode": want,
