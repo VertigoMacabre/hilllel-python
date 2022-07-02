@@ -68,7 +68,7 @@ if __name__ == '__main__':
             users_choice: GameActions = GameActions(users_input)
             gr = rock_paper_scissors_spock_lizard(users_choice)
             print(
-                f"{gr.result}, your choice was {GameActions(gr.user_choice)} and machine choice was {GameActions(gr.machine_choice)}",
+                f"{gr.result}, your choice was {gr.user_choice} and machine choice was {gr.machine_choice}",
                 end="\n")
 
             try:
